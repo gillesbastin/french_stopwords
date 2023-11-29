@@ -4,7 +4,7 @@ This repository contains a curated list of stopwords intended for pre-processing
 
 Standard text mining software or libraries often include default stopwords lists designed for pre-processing corpora. The typical use of such lists is to suppress all occurrences of the stopwords from the corpus. This helps increase the statistical weight of other words, their significance for analysis, and enhances the lexical distance between clusters in common text mining methods like hierarchical classification, principal components analysis, or topic modeling. Stopwords are generally considered either insignificant or too ambiguous for interpretation in text mining.
 
-However, these standard lists are known to be inadequate for languages other than English and are not consistently curated or improved over time. For instance, the Snowball list...
+However, these standard lists are known to be inadequate for languages other than English and are not consistently curated or improved over time. For instance, the Snowball list...[^1]
 
 To address this, I have compiled a more comprehensive list of stopwords.
 
@@ -41,3 +41,5 @@ The decision to consider a word as a stopword should always be made with the res
 ## Size
 
 The list...
+
+[^1]: See stopwords library
