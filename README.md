@@ -16,6 +16,10 @@ To address this, I have compiled a more comprehensive list of stopwords.
 
 - **Portability**: The list is provided as a CSV file.
 
+## Methodology
+
+
+
 ## What is Included in the List?
 
 - Coordination conjunctions
@@ -36,7 +40,8 @@ To address this, I have compiled a more comprehensive list of stopwords.
 
 ## Precautions
 
-The decision to consider a word as a stopword should always be made with the research question and the specific corpus in mind. Some words may have a very low level of significance in certain contexts but considerably higher significance in others. Therefore, it is advisable to carefully review and, if necessary, modify the list before applying it.
+- The list is for use on clean textual data written in French. For instance it does not include common graphical variations of stopwords due to spelling mistakes. In particular, all tokens in the list contain accents when needed. So check that your corpus contains them too. Another remarkable feature is that only one apostrophe has been retained whereas french corpora often contain two ( "’"/U+2019 and "'"/U+0027). The list is written with the "straight" or "vertical" apostrophe ("'"). So make sure that "slanted" ("typographic") apostrophes (which are actually right single quotation marks are replaced by straight ones in the corpus before using the list (for instance with mutate(text = str_replace_all(text, "’", "'"))
+- The decision to consider a word as a stopword should always be made with the research question and the specific corpus in mind. Some words may have a very low level of significance in certain contexts but considerably higher significance in others. Therefore, it is advisable to carefully review and, if necessary, modify the list before applying it.
 
 ## Size
 
