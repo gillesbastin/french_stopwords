@@ -1,12 +1,14 @@
 # French Stopwords
 
-This repository contains a curated list of stopwords intended for pre-processing French texts for text mining purposes.
+Stopwords are words that are generally deemed either insignificant or too ambiguous for meaningful interpretation in the context of text mining, and thus are removed from a corpus before analysis.
 
-Standard text mining software or libraries often include default stopwords lists designed for pre-processing corpora. The typical use of such lists is to suppress all occurrences of the stopwords from the corpus. This helps increase the statistical weight of other words, their significance for analysis, and enhances the lexical distance between clusters in common text mining methods like hierarchical classification, principal components analysis, or topic modeling. Stopwords are generally considered either insignificant or too ambiguous for interpretation in text mining.
+Standard text mining software or libraries often include default stopwords lists designed for pre-processing corpora. However, these standard lists are recognized as insufficient for languages other than English and lack consistent curation or ongoing improvements. For example, the Snowball list, a widely utilized solution in text mining, comprises only 164 tokens. Notably, it lacks very common and simple coordinating conjunctions like "ni," "donc," or "car." Another frequently employed list, [stopwords-iso](https://github.com/stopwords-iso/stopwords-fr/tree/master), consists of 691 tokens for French, which is substantial. However, a closer inspection reveals weaknesses in terms of verbs and numbers, as well as issues with missing accents. In the same time, it doubtfully includes words that can be considered meaningful and unambiguous, such as "droite," "nécessaire," "nouveau," and "valeur."[^1]
 
-However, these standard lists are known to be inadequate for languages other than English and are not consistently curated or improved over time. For instance, the Snowball list...[^1]
+This repository comprises a carefully curated list of stopwords designed for preprocessing French texts, specifically tailored for text mining tasks.
 
-To address this, I have compiled a more comprehensive list of stopwords.
+## Aim
+
+Although stopwords lists are being challenged by more statistical or AI-driven approaches, they are still very valuable for natural language processing (NLP). This is mainly because stop words are very common. Removing them thus helps speed up the processing of text data (which can be very time-consuming for large corpora). Because they do not contribute significantly to the meaning of a document, removing stopwords also helps increase the statistical importance of content words with greater semantic meaning and makes them more prominent in visual representations of the text. Consequently, removing stop words in a document before text analysis helps reduce noise in the data and increases the quality of the results.
 
 ## Principles
 
@@ -18,7 +20,11 @@ To address this, I have compiled a more comprehensive list of stopwords.
 
 ## Methodology
 
+Various sources, including previous lists, Wikimedia dictionary, websites and ChatGPT have been used to generate lists of stopwords in various domains. These lists have then been carefully curated in order to adapt them for use in NLP tasks.
 
+Two distinct sets of stopwords have been constituted from this work :
+
+- french_stopwords is the list of stopwords 
 
 ## What is Included in the List?
 
@@ -37,6 +43,10 @@ To address this, I have compiled a more comprehensive list of stopwords.
 - Numbers in digits
 - Special characters
 - Emojis
+
+## Use case
+
+The typical use case of a stopwords list is to remove all stopwords it contains from the documents analyzed.
 
 ## Precautions
 
