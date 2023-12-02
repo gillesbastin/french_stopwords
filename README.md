@@ -14,8 +14,8 @@ Although stopwords lists are being challenged by more statistical or AI-driven a
 
 Because the specifif format of a stopwords list depends on how it is going to be used, I have constituted to different lists of stopwords from this research.
 
-- french_stopwords is the list of stopwords *per se*. It only includes single words (or tokens), as opposed to expressions or locutions, that are to be used after the tokenization of a text document or a series of texts in a dataframe. This list should be used before tokenization only if you can be sure that words boundaries will be respected. The list contains small words or even isolated letters that can be found in many other words. Thus, using something like str_detect(text, list) or sub() or `stringr::str_replace_all()` would be very dangerous.
-- french_stoplocs is a list of locutions that can be considered as stopwords. It is interesting to deal with those expressions before tokenization because the tokens used in each locution can have a very different meaning when isolated. Thus removing those expressions is a good idea but it can only be performed before tokenization (for instance "tant bien que mal" means with difficulties but has nothing to do with good and evil). Due to the lenght of locutions, there is no risks to use str_detect().
+- french_stopwords is the list of stopwords *per se*. It only includes single words (or tokens), as opposed to expressions or locutions, that are to be used after the tokenization of a text document or a series of texts in a dataframe. This list should be used before tokenization only if you can be sure that words boundaries will be respected. The list contains small words or even isolated letters that can be found in many other words. Thus, using something like str_detect(text, list) or sub() or `stringr::str_replace_all()` would be very dangerous. french_stopwords contains XXX lines.
+- french_stoplocs is a list of locutions that can be considered as stopwords. It is interesting to deal with those expressions before tokenization because the tokens used in each locution can have a very different meaning when isolated. Thus removing those expressions is a good idea but it can only be performed before tokenization (for instance "tant bien que mal" means with difficulties but has nothing to do with good and evil). Due to the lenght of locutions, there is no risks to use str_detect(). french_stoplocs contains XXX lines.
 
 ## Methodology
 
@@ -53,15 +53,11 @@ The following rules have been applied while constituting the lists :
 - Special characters
 - Emojis
 
-## Use case
+## How to use the lists
 
 The typical use case of a stopwords list is to remove all stopwords it contains from the documents analyzed.
 
-## Precautions
+### Precautions
 
 - The list is for use on clean textual data written in French. For instance it does not include common graphical variations of stopwords due to spelling mistakes. In particular, all tokens in the list contain accents when needed. So check that your corpus contains them too. Another remarkable feature is that only one apostrophe has been retained whereas french corpora often contain two ( "’"/U+2019 and "'"/U+0027). The list is written with the "straight" or "vertical" apostrophe ("'"). So make sure that "slanted" ("typographic") apostrophes (which are actually right single quotation marks are replaced by straight ones in the corpus before using the list (for instance with mutate(text = str_replace_all(text, "’", "'"))
 - The decision to consider a word as a stopword should always be made with the research question and the specific corpus in mind. Some words may have a very low level of significance in certain contexts but considerably higher significance in others. Therefore, it is advisable to carefully review and, if necessary, modify the list before applying it.
-
-## Size
-
-The list...
