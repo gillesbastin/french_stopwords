@@ -10,14 +10,20 @@ This repository comprises a carefully curated list of stopwords designed for pre
 
 Although stopwords lists are being challenged by more statistical or AI-driven approaches, they are still very valuable for natural language processing (NLP). This is mainly because stopwords are very common. Removing them thus helps speed up the processing of text data (which can be very time-consuming for large corpora). Because they do not contribute significantly to the meaning of a document, removing stopwords also helps increase the statistical importance of content words with greater semantic meaning and makes them more prominent in visual representations of the text. Consequently, removing stopwords in a document before text analysis helps reduce noise in the data and increases the quality of the results.
 
-## Methodology
-
-Various sources, including previous lists, Wikimedia dictionary, websites and ChatGPT have been used to generate lists of stopwords in various domains. These lists have then been carefully curated in order to adapt them for use in NLP tasks.
+## Content of the depository
 
 Because the specifif format of a stopwords list depends on how it is going to be used, I have constituted to different lists of stopwords from this research.
 
 - french_stopwords is the list of stopwords *per se*. It only includes single words (or tokens), as opposed to expressions or locutions, that are to be used after the tokenization of a text document or a series of texts in a dataframe. This list should be used before tokenization only if you can be sure that words boundaries will be respected. The list contains small words or even isolated letters that can be found in many other words. Thus, using something like str_detect(text, list) or sub() or `stringr::str_replace_all()` would be very dangerous.
 - french_stoplocs is a list of locutions that can be considered as stopwords. It is interesting to deal with those expressions before tokenization because the tokens used in each locution can have a very different meaning when isolated. Thus removing those expressions is a good idea but it can only be performed before tokenization (for instance "tant bien que mal" means with difficulties but has nothing to do with good and evil). Due to the lenght of locutions, there is no risks to use str_detect().
+
+## Methodology
+
+### Sources
+
+Various sources, including previous lists, Wikimedia dictionary, websites and ChatGPT have been used to generate lists of stopwords in various domains. These lists have then been carefully curated in order to adapt them for use in NLP tasks.
+
+### Formats
 
 The following rules have been applied while constituting the lists :
 
@@ -26,9 +32,9 @@ The following rules have been applied while constituting the lists :
 - Tokens or locutions made of other tokens are not included (for instance "par laquelle" is not in the locutions' list because "par" and "laquelle" are in in the words list).
 - The lists have been transformed into .csv files for interoperability issues.
 
-## Boundaries
+### Boundaries
 
-### What is Included in the List?
+#### What is Included in the List?
 
 - Coordination conjunctions
 - Adverbs
@@ -39,7 +45,7 @@ The following rules have been applied while constituting the lists :
 - Time units
 - Months
 
-### What is Not Included?
+#### What is Not Included?
 
 - manner adverbs such as…
 - Punctuation
