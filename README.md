@@ -34,10 +34,9 @@ The following rules have been applied while constituting the lists :
 
 ### Boundaries
 
-#### What is Included in the List?
+#### french_stopwords
 
-- Coordination conjunctions
-- Adverbs
+french_stopwords is made of tokens (character strings without whitespaces). It includes the following grammatical categories : Coordination conjunctions ; Adverbs (especially space and time) ; Auxiliaries ("être" and "avoir") as well as other vers often used as auxiliaries ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ; cardinal numbers from zero to 1 billion : ordinal numbers ; days of the week ; time units ; months.
 - Auxiliaries (list)
 - Cardinal numbers from zero to 1 billion
 - Ordinal numbers from zero to 1 billion
@@ -45,7 +44,7 @@ The following rules have been applied while constituting the lists :
 - Time units
 - Months
 
-#### What is Not Included?
+#### french_stoplocs
 
 - manner adverbs such as…
 - Punctuation
