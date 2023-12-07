@@ -27,8 +27,6 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 
 ### Boundaries
 
-#### `FRENCH_STOPWORDS`
-
 `FRENCH_STOPWORDS` includes the following types of tokens :
 - Coordination conjunctions ;
 - Adverbs (especially space and time adverbs ; manner adverbs have not been included as they very often carry meaning) ;
@@ -46,11 +44,7 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 - Special characters
 - Emojis
 
-#### `FRENCH_STOPLOCS`
-
-FRENCH_STOPLOCS is a compilation of frequently employed adverbial phrases in French. However, it is not an exhaustive collection.
-
-The primary objective is to eliminate from a corpus those adverbial phrases consisting of tokens that might convey different meanings when interpreted individually. This is particularly important to prevent potential misinterpretations that could arise if the phrases were not removed prior to tokenization.
+`FRENCH_STOPLOCS` is a compilation of frequently employed adverbial phrases in French. However, it is not an exhaustive collection. Its primary objective is to eliminate from a corpus those adverbial phrases consisting of tokens that might convey different meanings when interpreted individually. This is particularly important to prevent potential misinterpretations that could arise if the phrases were not removed prior to tokenization.
 
 ### Formats
 
@@ -63,8 +57,8 @@ The following guidelines were adhered to when creating the lists:
 
 The typical use case for a stopwords list involves removing all stopwords it contains from the analyzed documents. This pre-processing step in an NLP pipeline requires careful consideration.
 
-- FRENCH_STOPWORDS should be applied after tokenization. It includes very short tokens, including isolated letters, which should only be removed when encountered as separate tokens in a text. Thus, it is essential to ensure that word boundaries have been correctly interpreted by your tokenization tool before eliminating stopwords with french_stopwords. In tidytext, the recommended approach is to use the list on a tokens column named 'word' with `filter(!word %in% french_stopwords$token)`. Avoid using the list on non-tokenized texts with functions like `stringr::str_replace_all()`.
-- FRENCH_STOPLOCS should be applied before tokenization since it consists of series of tokens that may not be preserved during tokenization. While it has a limited impact on texts due to the rarity of locutions, it is beneficial to address these expressions before tokenization. This is because the tokens used in each locution can have significantly different meanings when isolated (for example, "tant bien que mal" means "with difficulties" but has no association with "good" and "evil"). Given the length of locutions, there is no risk in using `stringr::str_replace_all()` in this case.
+- `FRENCH_STOPWORDS` should be applied after tokenization. It includes very short tokens, including isolated letters, which should only be removed when encountered as separate tokens in a text. Thus, it is essential to ensure that word boundaries have been correctly interpreted by your tokenization tool before eliminating stopwords with french_stopwords. In tidytext, the recommended approach is to use the list on a tokens column named 'word' with `filter(!word %in% french_stopwords$token)`. Avoid using the list on non-tokenized texts with functions like `stringr::str_replace_all()`.
+- `FRENCH_STOPLOCS` should be applied before tokenization since it consists of series of tokens that may not be preserved during tokenization. While it has a limited impact on texts due to the rarity of locutions, it is beneficial to address these expressions before tokenization. This is because the tokens used in each locution can have significantly different meanings when isolated (for example, "tant bien que mal" means "with difficulties" but has no association with "good" and "evil"). Given the length of locutions, there is no risk in using `stringr::str_replace_all()` in this case.
 
 ### Extra precautions
 
