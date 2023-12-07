@@ -1,6 +1,6 @@
 # French Stopwords
 
-Standard text mining software or libraries often include default stopwords lists designed for pre-processing corpora. However, these standard lists — which can be accessed through the [stopwords R library](https://github.com/quanteda/stopwords) a dependency of [Quanteda](https://github.com/quanteda/) text mining solution — are often insufficient for languages other than English and lack consistent curation or ongoing improvements. For example, the [Snowball](https://snowballstem.org/projects.html) list, a widely utilized solution in text mining, comprises only 164 tokens. Above all, it lacks very common and simple coordinating conjunctions such as "ni", "donc" or "car". Another frequently used list, [stopwords-iso](https://github.com/stopwords-iso/stopwords-fr/tree/master), consists of 691 tokens for French, which is substantial. However, a closer inspection reveals weaknesses with verbs and numbers, as well as problems with missing accents. At the same time, the list also includes meaningful and unambiguous words that barely qualify as stopwords, such as "nécessaire", "nouveau" or "valeur".
+Standard text mining software or libraries often include default stopwords lists designed for pre-processing corpora. However, these standard lists — which can be accessed through the [stopwords R library](https://github.com/quanteda/stopwords) a dependency of [Quanteda](https://github.com/quanteda/) text mining solution — are often insufficient for languages other than English and lack consistent curation or ongoing improvements. For example, the [Snowball](https://snowballstem.org/projects.html) list, a widely utilized solution in text mining, comprises only 164 tokens. Above all, it lacks very common and simple coordinating conjunctions such as "ni", "donc" or "car". Another frequently used list, [stopwords-iso](https://github.com/stopwords-iso/stopwords-fr/tree/master), consists of 691 tokens for French, which is substantial. However, a closer inspection reveals weaknesses with verbs and numbers, as well as problems with missing accents. At the same time, the list also includes meaningful and unambiguous words that do not really qualify as stopwords, such as "nécessaire", "nouveau" or "valeur".
 
 This repository contains a carefully curated list of 887 stopwords for preprocessing French texts, specifically designed for text mining tasks. I have used this list on several occasions, mainly for preprocessing news corpora. I believe that it is both comprehensive and effective for this type of task. With its help — typically by simply removing the words in the list (as well as punctuation and numbers) from a tokenized version of a corpus, the size of a standard French text document can be reduced by 50 % without much loss of meaning.
 
@@ -25,15 +25,6 @@ Because the specifif format of a stopwords list depends on how it is going to be
 
 Various sources, including previous lists, Wikimedia dictionary, websites and ChatGPT have been used to generate lists of stopwords in various domains. These lists have then been carefully curated in order to adapt them for use in NLP tasks.
 
-### Formats
-
-The following rules have been applied while constituting the lists :
-
-- The tokens and locutions are spelled with accents and special caracters
-- They are spelled lower case
-- Tokens or locutions made of other tokens are not included (for instance "par laquelle" is not in the locutions' list because "par" and "laquelle" are in in the words list).
-- The lists have been transformed into .csv files for interoperability issues.
-
 ### Boundaries
 
 #### french_stopwords
@@ -53,6 +44,15 @@ french_stopwords is made of tokens (character strings without whitespaces). It i
 - Numbers in digits
 - Special characters
 - Emojis
+
+### Formats
+
+The following rules have been applied while constituting the lists :
+
+- The tokens and locutions are spelled with accents and special caracters
+- They are spelled lower case
+- Tokens or locutions made of other tokens are not included (for instance "par laquelle" is not in the locutions' list because "par" and "laquelle" are in in the words list).
+- The lists have been transformed into .csv files for interoperability issues.
 
 ## How to use the lists
 
