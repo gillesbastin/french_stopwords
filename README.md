@@ -17,7 +17,7 @@ Although the stopwords lists approach for stopwords removal is now being challen
 ## Content of the depository
 
 - `FRENCH_STOPWORDS` contains only single words (or tokens), as opposed to expressions or locutions (it includes for instance "en" and "face" but not "en face"). It includes tokens containing an apostrophe (such as "aujourd'hui") or an hyphen ("dix-sept"). The list is stored in csv file with two columns : token and category. It has 903 lines.
-- `FRENCH_STOPLOCS` contains adverbial locutions such as "à cause de" or "d'une manière ou d'une autre". It is also stored as a csv file with only one colum nammed 'locution'. It has 327 lines.
+- `FRENCH_STOPLOCS` contains adverbial locutions made with stopwords or having the same characteristics as stopwords (weak or ambiguous meaning), such as "à cause de" or "d'une manière ou d'une autre". It is also stored as a csv file with only one colum nammed 'locution'. It has 327 lines.
 
 - 
 - , that are to be used after the tokenization of a text document or a series of texts in a dataframe. This list should be used before tokenization only if you can be sure that words boundaries will be respected. The list contains small words or even isolated letters that can be found in many other words. Thus, using something like str_detect(text, list) or sub() or `stringr::str_replace_all()` would be very dangerous. french_stopwords contains XXX lines.
@@ -27,13 +27,14 @@ Although the stopwords lists approach for stopwords removal is now being challen
 
 ### Sources
 
-Various sources, including previous lists, Wikimedia dictionary, websites and ChatGPT have been used to generate lists of stopwords in various domains. These lists have then been carefully curated in order to adapt them for use in NLP tasks.
+Various sources, including previous lists (as [Lexique](http://www.lexique.org/), Wikimedia dictionary, websites and ChatGPT have been used to generate lists of stopwords in various domains. These lists have then been carefully curated in order to adapt them for use in NLP tasks.
 
 ### Boundaries
 
 #### french_stopwords
 
-`FRENCH_STOPWORDS` is made of tokens (character strings without whitespaces). It includes the following grammatical categories : Coordination conjunctions ; Adverbs (especially space and time) ; Auxiliaries ("être" and "avoir") as well as other vers often used as auxiliaries ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ; cardinal numbers from zero to 1 billion : ordinal numbers ; days of the week ; time units ; months.
+`FRENCH_STOPWORDS` includes the following types of tokens :
+- Coordination conjunctions ; Adverbs (especially space and time) ; Auxiliaries ("être" and "avoir") as well as other vers often used as auxiliaries ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ; cardinal numbers from zero to 1 billion : ordinal numbers ; days of the week ; time units ; months.
 - Auxiliaries (list)
 - Cardinal numbers from zero to 1 billion
 - Ordinal numbers from zero to 1 billion
