@@ -4,7 +4,7 @@ Standard text mining software or libraries often include default stopwords lists
 
 This repository contains a carefully curated list of 887 stopwords for preprocessing French texts, specifically designed for text mining tasks. I have used this list on several occasions, mainly for preprocessing news corpora. I believe that it is both comprehensive and effective for this type of task. With its help — typically by simply removing the words in the list (as well as punctuation and numbers) from a tokenized version of a corpus, the size of a standard French text document can be reduced by 50 % without much loss of meaning.
 
-In addition, the repository also contains a list of 342 adverbial locutions which can also be used — albeit with more caution — in French text preprocessing.
+In addition, the repository also contains a list of 342 adverbial locutions which can be used — albeit with more caution — in French text preprocessing.
 
 ## Aim
 
