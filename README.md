@@ -8,9 +8,11 @@ In addition, the repository also contains a list of 342 adverbial locutions whic
 
 ## Aim
 
-Stopwords are words that are generally deemed meaningless or too ambiguous (or both) for interpretation in the context of text mining. They are generally removed from a corpus before its processingh with text mining methods such as occurrence or co-occurrence analysis, classification, principal components analysis, topic modeling, etc. Although the stopwords lists approach is being challenged by more statistical or AI-driven approaches for stopword removal, such lists are still very valuable for natural language processing (NLP) and widely used.
+Stopwords are words that are generally deemed meaningless or too ambiguous (or both) for interpretation in the context of text mining. They are generally removed from a corpus before its processingh with text mining methods such as occurrence or co-occurrence analysis, classification, principal components analysis, topic modeling, etc. Typically, pronouns, adverbs, auxilliaries, determinants, conjunctions are considered as stopwords.
 
 Removing stopwords in text preprocessing is a good ideas in many respects. Because stopwords are very common, it helps speed up the processing of text data (which can be very time-consuming for large corpora). Because they do not contribute significantly to the meaning of a document, it also helps increase the statistical importance of content words with greater semantic meaning and makes them more prominent in visual representations of the text. Consequently, removing stopwords in a document before text analysis helps reduce noise in the data and increases the quality of the results.
+
+Although the stopwords lists approach for stopwords removal is now being challenged by more statistical or AI-driven approaches (for instance removing tokens based on their frequency in a corpus, or performing Part-of-Speech tagging on a corpus and removing tokens based on their grammatical classification), such lists are still very valuable for natural language processing (NLP) and widely used.
 
 ## Content of the depository
 
