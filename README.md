@@ -8,7 +8,7 @@ In addition, the repository also contains a list of 342 adverbial locutions whic
 
 ## Aim
 
-Stopwords are words that are generally deemed insignificant or too ambiguous for meaningful interpretation (or both) in the context of text mining. They are generally removed from a corpus before its analysis with text mining methods such as occurrence or co-occurrence analysis, classification, principal components analysis, topic modeling, etc. Although the stopwords lists approach is being challenged by more statistical or AI-driven approaches for stopword removal, such lists are still very valuable for natural language processing (NLP) and widely used.
+Stopwords are words that are generally deemed meaningless or too ambiguous (or both) for interpretation in the context of text mining. They are generally removed from a corpus before its processingh with text mining methods such as occurrence or co-occurrence analysis, classification, principal components analysis, topic modeling, etc. Although the stopwords lists approach is being challenged by more statistical or AI-driven approaches for stopword removal, such lists are still very valuable for natural language processing (NLP) and widely used.
 
 Removing stopwords in text preprocessing is a good ideas in many respects. Because stopwords are very common, it helps speed up the processing of text data (which can be very time-consuming for large corpora). Because they do not contribute significantly to the meaning of a document, it also helps increase the statistical importance of content words with greater semantic meaning and makes them more prominent in visual representations of the text. Consequently, removing stopwords in a document before text analysis helps reduce noise in the data and increases the quality of the results.
 
@@ -29,7 +29,7 @@ Various sources, including previous lists, Wikimedia dictionary, websites and Ch
 
 #### french_stopwords
 
-french_stopwords is made of tokens (character strings without whitespaces). It includes the following grammatical categories : Coordination conjunctions ; Adverbs (especially space and time) ; Auxiliaries ("être" and "avoir") as well as other vers often used as auxiliaries ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ; cardinal numbers from zero to 1 billion : ordinal numbers ; days of the week ; time units ; months.
+`FRENCH_STOPWORDS` is made of tokens (character strings without whitespaces). It includes the following grammatical categories : Coordination conjunctions ; Adverbs (especially space and time) ; Auxiliaries ("être" and "avoir") as well as other vers often used as auxiliaries ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ; cardinal numbers from zero to 1 billion : ordinal numbers ; days of the week ; time units ; months.
 - Auxiliaries (list)
 - Cardinal numbers from zero to 1 billion
 - Ordinal numbers from zero to 1 billion
