@@ -106,8 +106,8 @@ df <- df %>% mutate(Texte = str_replace_all(Texte, loc, ""))
 
 ### Extra precautions
 
-- [`FRENCH_STOPWORDS`](french_stopwords.csv) and [`FRENCH_STOPLOCS`](french_stoplocs.csv) are designed for use on clean textual data written in French. They do not encompass common graphical variations of stopwords resulting from spelling errors, OCR issues, etc. It is thus recommended to clean text variable before using them.
+- [`FRENCH_STOPWORDS`](french_stopwords.csv) and [`FRENCH_STOPLOCS`](french_stoplocs.csv) are intended for use with clean textual data written in French. They do not account for common graphical variations of stopwords resulting from spelling errors, OCR issues, etc. Therefore, it is advisable to preprocess the text variables before applying these lists.
 - All tokens in both lists include accents and special characters (such as "œ") when necessary. Therefore, it is important to verify that your corpus also contains accents.
-- All tokens are in lowercase and so should the original text be.
-- While French corpora may often include two types of apostrophe ("’"/U+2019 and "'"/U+0027), the lists retains only the "straight" or "vertical" one ("'"). Consequently, ensure that "slanted" ("typographic") apostrophes (in fact right single quotation marks) are replaced by straight ones in the corpus before using the lists (e.g., with `dplyr::mutate(text = str_replace_all(text, "’", "'")`).
-- The decision to classify a word as a stopword should always align with the research question and the specific corpus in use. Some words may have minimal significance in certain contexts but can be considerably more meaningful in others. Therefore, it is recommended to carefully review and, if necessary, modify the list before applying it.
+- All tokens are in lowercase, and the original text should follow suit.
+- While French corpora may often feature two types of apostrophes ("’"/U+2019 and "'"/U+0027), the lists retain only the "straight" or "vertical" one ("'"). Thus, ensure that "slanted" ("typographic") apostrophes (effectively right single quotation marks) are replaced by straight ones in the corpus before utilizing the lists (e.g., with `dplyr::mutate(text = str_replace_all(text, "’", "'")`).
+- The decision to categorize a word as a stopword should always align with the research question and the specific corpus in use. Some words may have minimal significance in certain contexts but can be considerably more meaningful in others. Therefore, it is recommended to carefully review and, if necessary, modify the list before applying it.
