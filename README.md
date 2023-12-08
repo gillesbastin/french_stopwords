@@ -54,7 +54,7 @@ The typical use case for a stopwords list involves removing all stopwords it con
 
 ### Examples
 
-The way [`FRENCH_STOPWORDS`](french_stopwords.csv) should be used is partly dependent on the tool used for tokenization. Here are two different examples with `tidytext::unnest()` and `udpipde::udpipe_annotate()`. In both examples, df is a dataframe with a text column nammed Text
+The way [`FRENCH_STOPWORDS`](french_stopwords.csv) should be used is partly dependent on the tool used for tokenization. Here are two different examples in R with `tidytext::unnest()` and `udpipde::udpipe_annotate()`. In both examples, df is a dataframe with a text column nammed Text
 
 ```R copy
 # tidytext approach with unnest()
@@ -95,6 +95,14 @@ df_tokenized_udpipe <- df_tokenized_udpipe %>%
 df_tokenized_udpipe$lemma[is.na(df_tokenized_udpipe$lemma)] <- df_tokenized_udpipe$token
 ```
 
+If you want to use [`FRENCH_STOPLOCS`](french_stoplocs.csv), you should use the followin code directly on your Text column :
+
+```R copy
+# Create a list of locutions separated by "|"
+loc <- paste(adverbial_locutions, collapse = '|')
+# Remove all locutions in the text
+df <- df %>% mutate(Texte = str_replace_all(Texte, loc, ""))
+```
 
 ### Extra precautions
 
