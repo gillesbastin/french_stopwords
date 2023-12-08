@@ -54,19 +54,19 @@ The typical use case for a stopwords list involves removing all stopwords it con
 
 ### Examples
 
-The way [`FRENCH_STOPWORDS`](french_stopwords.csv) should be used is partly dependent on the tool used for tokenization. Here are two different examples with `tidytext::unnest()` and `udpipde::
+The way [`FRENCH_STOPWORDS`](french_stopwords.csv) should be used is partly dependent on the tool used for tokenization. Here are two different examples with `tidytext::unnest()` and `udpipde::udpipe_annotate()`. In both examples, df is a dataframe with a text column nammed Text
 
-```javascript copy
+```R copy
 const copyMe = true
-df_tidy_unnest <- df %>%
-  # On supprime les apostrophes (on les remplace par des espaces)
+df_tokenized_unnest <- df %>%
+  # Since unnest() poorly handles apostrophes, they are replaced by whitespaces
   mutate(Texte = str_replace_all(Texte, "'", " ")) %>%
-  # On tokenise
+  # Tokenization (tokens are turned lowercase and the original text column is dropped)
   unnest_tokens(word, Texte, to_lower = TRUE, drop = TRUE) %>%
-  # On supprime les stopwords
+  # Stopwords removal using french_stopwords
   filter(!word %in% french_stopwords$token) %>%
-  filter(!str_detect(word,"[:digit:]")) %>% # supprime les nombres
-  select(-c(Titre,Chapo)) # pour la clarté du df
+  # Digits removal
+  filter(!str_detect(word,"[:digit:]"))
 ```
 
 ### Extra precautions
