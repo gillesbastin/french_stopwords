@@ -53,3 +53,63 @@ Le cas d'utilisation typique d'une liste de mots vides consiste à supprimer tou
 
 - [`FRENCH_STOPWORDS`](french_stopwords.csv) doit être appliqué après la tokenisation. Il inclut des tokens très courts, y compris des lettres isolées, qui ne doivent être supprimés que lorsqu'ils sont rencontrés comme des tokens séparés dans un texte. Il est donc essentiel de s'assurer que les limites des mots ont été correctement interprétées par votre outil de tokenisation avant d'éliminer les mots vides avec [`FRENCH_STOPWORDS`](french_stopwords.csv). Évitez surtout d'utiliser la liste sur des textes non-tokenisés avec des fonctions R telles que `stringr::str_replace_all()`.
 - [`FRENCH_STOPLOCS`](french_stoplocs.csv) doit être appliqué avant la tokenisation car il est constitué de séries de tokens séparés par des espaces blancs qui ne seront pas préservés par la tokenisation. Bien que la suppression de [`FRENCH_STOPLOCS`](french_stoplocs.csv) ait un impact limité sur les textes en raison de la rareté des locutions, il est bénéfique de traiter ces expressions avant la tokenisation. Les tokens utilisés dans chaque locution peuvent avoir des significations considérablement différentes lorsqu'ils sont isolés (par exemple, "tant bien que mal" - qui signifie "avec difficultés" - produirait une occurrence de "bien" ("good") et "mal" ("evil") s'il n'était pas supprimé avant la tokenisation. Étant donné la longueur des locutions, il n'y a aucun risque d'utiliser des fonctions telles que `stringr::str_replace_all()` dans ce cas.
+
+### Exemples
+
+La manière dont [`FRENCH_STOPWORDS`](french_stopwords.csv) doit être utilisée dépend en partie de l'outil utilisé pour la tokenisation. Voici deux exemples différents en R avec `tidytext::unnest()` et `udpipde::udpipe_annotate()`. Dans les deux exemples, df est un dataframe avec une colonne de texte nommée Texte.
+
+```R copy
+# Approche tidytext avec unnest()
+df_tokenized_unnest <- df %>%
+  # Étant donné que unnest() gère mal les apostrophes, elles sont remplacées par des espaces blancs
+  mutate(Texte = str_replace_all(Texte, "'", " ")) %>%
+  # Tokenisation (les tokens sont mis en minuscules et la colonne de texte d'origine est supprimée)
+  unnest_tokens(word, Texte, to_lower = TRUE, drop = TRUE) %>%
+  # Suppression des mots vides en utilisant french_stopwords
+  filter(!word %in% french_stopwords$token) %>%
+  # Suppression des chiffres
+  filter(!str_detect(word, "[:digit:]"))
+```
+
+L'approche tidytext est très simple mais présente quelques problèmes majeurs (la suppression des apostrophes est par exemple une mauvaise solution). Vous pouvez plutôt utiliser udpipe qui est basé sur un modèle linguistique et fonctionne mieux pour découper les phrases en tokens. Un autre avantage d'udpipe est qu'il vous donne également un lemme pour chaque token. L'inconvénient de l'utilisation d'udpipe est qu'elle peut être assez lente sur de grands corpus et qu'elle nécessite un certain traitement de la colonne tokenisée pour gérer la ponctuation.
+
+```R copy
+# Installer le modèle français pour udpipe
+model <- udpipe_download_model(language = "french")
+# Charger le modèle français
+ud_model <- udpipe_load_model(model$file_model)
+# Tokeniser et étiqueter les parties du discours
+df_tokenized_udpipe <- udpipe_annotate(ud_model, x = df$Texte) %>%
+  as.data.frame() %>%
+      select(-sentence)
+# Nettoyer la colonne token
+df_tokenized_udpipe <- df_tokenized_udpipe %>%
+  mutate(token = tolower(token)) %>%
+  mutate(token = ifelse(str_detect(token, "^-"), str_replace(token, "-", ""), token)) %>% # supprimer le - quand le token commence par un tiret
+  mutate(token = ifelse(str_detect(token, "^«"), str_replace(token, "«", ""), token)) %>% # supprimer le « quand le token commence par un guillemet ouvrant
+  mutate(token = ifelse(str_detect(token, ".»$"), str_replace(token, "»", ""), token)) %>% # supprimer le guillemet quand le token finit par un guillemet
+  mutate(token = ifelse(str_detect(token, ".'$"), str_replace(token, "'", ""), token)) %>% # supprimer l'apostrophe quand le token finit par une apostrophe
+  filter(!token %in% french_stopwords$token) %>%
+  filter(!token %in% c(",", ";", ".", "!", "?", "(", ")", ":", "«", "»", "'", "-", "[", "]", "/", "\\", "%", "…", "...", "“", "”", "\"", "+", "-", "–")) %>%
+  filter(!token %in% c("")) %>%
+  filter(!str_detect(token, "[:digit:]"))
+# Remplacer les lemmes manquants par le token d'origine
+df_tokenized_udpipe$lemma[is.na(df_tokenized_udpipe$lemma)] <- df_tokenized_udpipe$token
+```
+
+Si vous souhaitez utiliser [`FRENCH_STOPLOCS`](french_stoplocs.csv), vous devez exécuter le code R suivant directement sur votre colonne Texte :
+
+```R copy
+# Créer une liste de locutions séparées par "|"
+loc <- paste(french_stoplocs$locution, collapse = '|')
+# Supprimer toutes les locutions dans le texte
+df <- df %>% mutate(Texte = str_replace_all(Texte, loc, ""))
+```
+
+### Précautions supplémentaires
+
+- [`FRENCH_STOPWORDS`](french_stopwords.csv) et [`FRENCH_STOPLOCS`](french_stoplocs.csv) sont destinés à être utilisés avec des données textuelles propres rédigées en français. Ils ne tiennent pas compte des variations graphiques courantes des mots vides résultant d'erreurs d'orthographe, de problèmes OCR, etc. Il est donc recommandé de prétraiter les variables texte avant d'appliquer ces listes.
+- Tous les tokens des deux listes incluent des accents et des caractères spéciaux (comme "œ") lorsque c'est nécessaire. Il est donc important de vérifier que votre corpus contient également des accents.
+- Tous les tokens sont en minuscules, et le texte d'origine devrait suivre cette convention.
+- Bien que les corpus en français contiennent souvent deux types d'apostrophes ("’"/U+2019 et "'"/U+0027), les listes ne conservent que l'apostrophe "droite" ou "verticale" ("'"). Assurez-vous donc que les apostrophes "inclinées" ("typographiques") (qui sont en fait des apostrophes droites) sont remplacées par des apostrophes droites dans le corpus avant d'utiliser les listes (par exemple, avec dplyr::mutate(text = str_replace_all(text, "’", "'")).
+- La décision de classer un mot comme un mot vide doit toujours être en accord avec la question de recherche et le corpus spécifique en cours d'utilisation. Certains mots peuvent avoir une signification minimale dans certains contextes mais peuvent être beaucoup plus significatifs dans d'autres. Il est donc recommandé de revoir attentivement et, si nécessaire, de modifier la liste avant de l'appliquer.
