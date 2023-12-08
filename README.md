@@ -41,28 +41,38 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 - manner adverbs
 - Punctuation
 - Numbers in digits
-- Special characters
 - Emojis
 
-[`FRENCH_STOPLOCS`](french_stoplocs.csv) is a compilation of frequently employed adverbial phrases in French. However, it is not an exhaustive collection. Its primary objective is to eliminate from a corpus those adverbial phrases consisting of tokens that might convey different meanings when interpreted individually. This is particularly important to prevent potential misinterpretations that could arise if the phrases were not removed prior to tokenization.
-
-### Formats
-
-The following guidelines were adhered to when creating the lists:
-
-- Tokens and phrases are written with accents and special characters.
-- All entries are in lowercase.
+[`FRENCH_STOPLOCS`](french_stoplocs.csv) is a compilation of frequently employed adverbial phrases in French. However, it is not an exhaustive collection. Its primary objective is to suppress those adverbial phrases consisting of tokens that might convey different meanings when interpreted individually. This is particularly important to prevent potential misinterpretations that could arise if the phrases were not removed prior to tokenization.
 
 ## How to use the lists
 
 The typical use case for a stopwords list involves removing all stopwords it contains from the analyzed documents. This pre-processing step in an NLP pipeline requires careful consideration.
 
-- [`FRENCH_STOPWORDS`](french_stopwords.csv) should be applied after tokenization. It includes very short tokens, including isolated letters, which should only be removed when encountered as separate tokens in a text. Thus, it is essential to ensure that word boundaries have been correctly interpreted by your tokenization tool before eliminating stopwords with french_stopwords. In tidytext, the recommended approach is to use the list on a tokens column named 'word' with `filter(!word %in% french_stopwords$token)`. Avoid using the list on non-tokenized texts with functions like `stringr::str_replace_all()`.
-- [`FRENCH_STOPLOCS`](french_stoplocs.csv) should be applied before tokenization since it consists of series of tokens that may not be preserved during tokenization. While it has a limited impact on texts due to the rarity of locutions, it is beneficial to address these expressions before tokenization. This is because the tokens used in each locution can have significantly different meanings when isolated (for example, "tant bien que mal" means "with difficulties" but has no association with "good" and "evil"). Given the length of locutions, there is no risk in using `stringr::str_replace_all()` in this case.
+- [`FRENCH_STOPWORDS`](french_stopwords.csv) should be applied after tokenization. It includes very short tokens, including isolated letters, which should only be removed when encountered as separate tokens in a text. Thus, it is essential to ensure that word boundaries have been correctly interpreted by your tokenization tool before eliminating stopwords with [`FRENCH_STOPWORDS`](french_stopwords.csv). Especially avoid using the list on non-tokenized texts with R functions like `stringr::str_replace_all()`.
+- [`FRENCH_STOPLOCS`](french_stoplocs.csv) should be applied before tokenization since it consists of series of tokens separated by whitespaces that will not be preserved by tokenization. While removing [`FRENCH_STOPLOCS`](french_stoplocs.csv) has a limited impact on texts due to the rarity of locutions, it is beneficial to address these expressions before tokenization. The tokens used in each locution can have significantly different meanings when isolated (for example, "tant bien que mal" — which means "with difficulties" — would produce an occurrence of "bien" ("good") and "mal" ("evil") if not removed before tokenization. Given the length of locutions, there is no risk in using functions such as `stringr::str_replace_all()` in this case.
+
+### Examples
+
+The way [`FRENCH_STOPWORDS`](french_stopwords.csv) should be used is partly dependent on the tool used for tokenization. Here are two different examples with `tidytext::unnest()` and `udpipde::
+
+```javascript copy
+const copyMe = true
+df_tidy_unnest <- df %>%
+  # On supprime les apostrophes (on les remplace par des espaces)
+  mutate(Texte = str_replace_all(Texte, "'", " ")) %>%
+  # On tokenise
+  unnest_tokens(word, Texte, to_lower = TRUE, drop = TRUE) %>%
+  # On supprime les stopwords
+  filter(!word %in% french_stopwords$token) %>%
+  filter(!str_detect(word,"[:digit:]")) %>% # supprime les nombres
+  select(-c(Titre,Chapo)) # pour la clarté du df
+```
 
 ### Extra precautions
 
 - [`FRENCH_STOPWORDS`](french_stopwords.csv) and [`FRENCH_STOPLOCS`](french_stoplocs.csv) are designed for use on clean textual data written in French. They do not encompass common graphical variations of stopwords resulting from spelling errors, OCR issues, etc. It is thus recommended to clean text variable before using them.
-- All tokens in both lists include accents when necessary. Therefore, it is important to verify that your corpus also contains accents.
-- While French corpora may often include two types of apostrophe ("’"/U+2019 and "'"/U+0027), the lists retains only the "straight" or "vertical" one ("'"). Consequently, ensure that "slanted" ("typographic") apostrophes (which are in fact right single quotation marks) are replaced by straight ones in the corpus before using the lists (e.g., with `dplyr::mutate(text = str_replace_all(text, "’", "'")`).
+- All tokens in both lists include accents and special characters (such as "œ") when necessary. Therefore, it is important to verify that your corpus also contains accents.
+- All tokens are in lowercase and so should the original text be.
+- While French corpora may often include two types of apostrophe ("’"/U+2019 and "'"/U+0027), the lists retains only the "straight" or "vertical" one ("'"). Consequently, ensure that "slanted" ("typographic") apostrophes (in fact right single quotation marks) are replaced by straight ones in the corpus before using the lists (e.g., with `dplyr::mutate(text = str_replace_all(text, "’", "'")`).
 - The decision to classify a word as a stopword should always align with the research question and the specific corpus in use. Some words may have minimal significance in certain contexts but can be considerably more meaningful in others. Therefore, it is recommended to carefully review and, if necessary, modify the list before applying it.
