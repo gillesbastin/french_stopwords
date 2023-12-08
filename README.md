@@ -57,7 +57,7 @@ The typical use case for a stopwords list involves removing all stopwords it con
 The way [`FRENCH_STOPWORDS`](french_stopwords.csv) should be used is partly dependent on the tool used for tokenization. Here are two different examples with `tidytext::unnest()` and `udpipde::udpipe_annotate()`. In both examples, df is a dataframe with a text column nammed Text
 
 ```R copy
-const copyMe = true
+# tidytext approach with unnest()
 df_tokenized_unnest <- df %>%
   # Since unnest() poorly handles apostrophes, they are replaced by whitespaces
   mutate(Texte = str_replace_all(Texte, "'", " ")) %>%
@@ -68,6 +68,33 @@ df_tokenized_unnest <- df %>%
   # Digits removal
   filter(!str_detect(word,"[:digit:]"))
 ```
+The tidytext approach is very easy but has some major issues (the removal of apostrophes is for instance a bad solution).
+Instead you can use udpipe which is based on a language model and performs better at splitting phrases into tokens. Another advantage of udpipe is that it also gives you a lemma for each token. The downside of using udpipe is that it can be quite slow on large corpora and it needs some processing of the tokenized column to deal with punctuation.
+
+```R copy
+# Install the French model for udpipe
+model <- udpipe_download_model(language = "french")
+# Load the French model
+ud_model <- udpipe_load_model(model$file_model)
+# Tokenize and tag parts of speech
+df_tokenized_udpipe <- udpipe_annotate(ud_model, x = df$Texte) %>%
+  as.data.frame() %>%
+      select(-sentence)
+# Clean token column
+df_tokenized_udpipe <- df_tokenized_udpipe %>%
+  mutate(token = tolower(token)) %>%
+  mutate(token = ifelse(str_detect(token, "^-"), str_replace(token, "-", ""), token)) %>% # supprime le - quand le token commence par un tiret
+  mutate(token = ifelse(str_detect(token, "^«"), str_replace(token, "«", ""), token)) %>% # supprime le « quand le token commence par un guillemet ouvrant
+  mutate(token = ifelse(str_detect(token, ".»$"), str_replace(token, "»", ""), token)) %>% # supprime le guillemet quand le token finit par un guillement
+  mutate(token = ifelse(str_detect(token, ".'$"), str_replace(token, "'", ""), token)) %>% # supprime l'apostrophe quand le token finit par une apostrophe
+  filter(!token %in% french_stopwords$token) %>%
+  filter(!token %in% c(",", ";", ".", "!", "?", "(", ")", ":", "«", "»", "'", "-", "[", "]", "/", "\\", "%", "…", "...", "“", "”", "\"", "+", "-", "–")) %>%
+  filter(!token %in% c("")) %>%
+  filter(!str_detect(token,"[:digit:]"))
+# Replace missing lemmas with original token
+df_tokenized_udpipe$lemma[is.na(df_tokenized_udpipe$lemma)] <- df_tokenized_udpipe$token
+```
+
 
 ### Extra precautions
 
