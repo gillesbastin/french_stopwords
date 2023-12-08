@@ -99,7 +99,7 @@ If you want to use [`FRENCH_STOPLOCS`](french_stoplocs.csv), you should run the 
 
 ```R copy
 # Create a list of locutions separated by "|"
-loc <- paste(adverbial_locutions, collapse = '|')
+loc <- paste(french_stoplocs$locution, collapse = '|')
 # Remove all locutions in the text
 df <- df %>% mutate(Texte = str_replace_all(Texte, loc, ""))
 ```
