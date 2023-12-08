@@ -16,7 +16,7 @@ Although the stopwords lists approach for stopwords removal is now being challen
 
 ## Content of the depository
 
-- [`FRENCH_STOPWORDS`](french_stopwords.csv) contains only single words (or tokens), as opposed to expressions or locutions (it includes for instance "en" and "face" but not "en face"). It includes tokens containing an apostrophe (such as "aujourd'hui") or an hyphen ("dix-sept"). The list is stored in csv file with two columns : token and category (tokens are categorized grammatically in a very approximate way due to their ambiguity). It has 903 lines.
+- [`FRENCH_STOPWORDS`](french_stopwords.csv) contains only single words (or tokens), as opposed to expressions or locutions (it includes for instance "en" and "face" but not "en face"). It includes tokens containing an apostrophe (such as "aujourd'hui") and, in this case, also the separate parts of such tokens ("aujourd" and "hui") in order to prevent issues with poor handling of apostrophes in tokenization. The list also includes tokens containing an hyphen ("dix-sept"). It is stored in csv file with two columns : token and category (tokens are categorized grammatically in a very approximate way due to their ambiguity). It has 903 lines.
 - [`FRENCH_STOPLOCS`](french_stoplocs.csv) contains adverbial locutions made with stopwords or having the same characteristics as stopwords (weak or ambiguous meaning), such as "à cause de" or "d'une manière ou d'une autre". It is also stored as a csv file with only one colum nammed 'locution'. It has 327 lines.
 
 ## Methodology
