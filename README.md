@@ -35,7 +35,7 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 - Ordinal numbers (same limits) ;
 - Days of the week ;
 - Time units ;
-- Months.
+- Months (including with "mi-" : "janvier" & "mi-janvier").
 
 [`FRENCH_STOPWORDS`](french_stopwords.csv) does not include the following types of tokens :
 - manner adverbs
