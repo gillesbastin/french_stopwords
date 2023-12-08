@@ -353,7 +353,6 @@ quatre-vingt-dix-huitième;ordinals
 quatre-vingt-dix-neuvième;ordinals
 centième;ordinals
 millième;ordinals
-milliardième;ordinals
 premièrement;ordinals
 deuxièmement;ordinals
 troisièmement;ordinals
@@ -805,6 +804,7 @@ posteriori;other
 fortiori;other
 ne;other
 ça;other
+mi;other
 trop;other
 très;other
 d'une;other
