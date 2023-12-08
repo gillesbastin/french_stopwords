@@ -95,7 +95,7 @@ df_tokenized_udpipe <- df_tokenized_udpipe %>%
 df_tokenized_udpipe$lemma[is.na(df_tokenized_udpipe$lemma)] <- df_tokenized_udpipe$token
 ```
 
-If you want to use [`FRENCH_STOPLOCS`](french_stoplocs.csv), you should use the followin code directly on your Text column :
+If you want to use [`FRENCH_STOPLOCS`](french_stoplocs.csv), you should run the following R code directly on your Text column :
 
 ```R copy
 # Create a list of locutions separated by "|"
