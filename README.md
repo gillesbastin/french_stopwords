@@ -33,7 +33,7 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 - Coordination conjunctions ;
 - Adverbs (especially space and time adverbs ; manner adverbs have not been included as they very often carry meaning) ;
 - Auxiliaries ("être" and "avoir") as well as other verbs often used as auxiliaries ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ;
-- Cardinal numbers (all tokens used to count from zero to 999 999 ; the tokens "million" and "billion" (as well as their plural forms) have not been included because they are foten useful to categorize texts mentioning economic issues) ;
+- Cardinal numbers (all tokens used to count from zero to 999 999 ; the tokens "million" and "billion" (as well as their plural forms) have not been included because they are often useful to categorize texts mentioning economic issues) ;
 - Ordinal numbers (same limits) ;
 - Days of the week ;
 - Time units ;
