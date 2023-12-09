@@ -99,7 +99,6 @@ df_tokenized_udpipe <- df_tokenized_udpipe %>%
   mutate(token = ifelse(str_detect(token, "^\\.\\.\\."), str_replace(token, "\\.\\.\\.", ""), token)) %>% # supprime les trois points quand le token commence par trois points
   mutate(token = ifelse(str_detect(token, "^\\."), str_replace(token, "\\.", ""), token)) %>% # supprime le point quand le token commence par un point
   filter(!token %in% french_stopwords$token) %>%
-  filter(!token %in% c(",", ";", ".", "!", "?", "(", ")", ":", "«", "»", "'", "-", "[", "]", "/", "\\", "%", "…", "...", "“", "”", "\"", "+", "-", "–")) %>%
   filter(!token %in% c("")) %>%
   filter(!str_detect(token, "[:digit:]"))
 # Remplacer les lemmes manquants par le token d'origine
