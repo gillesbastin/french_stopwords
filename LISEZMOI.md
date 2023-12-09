@@ -33,7 +33,7 @@ Diverses sources, dont des listes précédentes (comme [Lexique](http://www.lexi
 - Conjonctions de coordination ;
 - Adverbes (en particulier les adverbes de lieu et de temps ; les adverbes de manière n'ont pas été inclus car ils portent très souvent un sens) ;
 - Auxiliaires ("être" et "avoir") ainsi que d'autres verbes souvent utilisés comme auxiliaires ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ;
-- Nombres cardinaux (tous les tokens utilisés pour compter de zéro à 999 999 ; les tokens "million" et "milliard" (ainsi que leurs formes plurielles) n'ont pas été inclus car ils sont souvent utiles pour catégoriser les textes mentionnant des problèmes économiques) ;
+- Nombres cardinaux (tous les tokens utilisés pour compter de zéro à 999 999 ; les tokens "million" et "milliard" (ainsi que leurs formes plurielles) n'ont pas été inclus car ils sont souvent utiles pour catégoriser les textes mentionnant des sujets économiques) ;
 - Nombres ordinaux (mêmes limites) ;
 - Jours de la semaine ;
 - Unités de temps ;
@@ -61,7 +61,7 @@ La manière dont [`FRENCH_STOPWORDS`](french_stopwords.csv) doit être utilisée
 ```R copy
 # Approche tidytext avec unnest()
 df_tokenized_unnest <- df %>%
-  # Étant donné que unnest() gère mal les apostrophes, elles sont remplacées par des espaces blancs
+  # Étant donné que unnest() gère mal les apostrophes, elles sont remplacées par des espaces
   mutate(Texte = str_replace_all(Texte, "'", " ")) %>%
   # Tokenisation (les tokens sont mis en minuscules et la colonne de texte d'origine est supprimée)
   unnest_tokens(word, Texte, to_lower = TRUE, drop = TRUE) %>%
@@ -71,7 +71,7 @@ df_tokenized_unnest <- df %>%
   filter(!str_detect(word, "[:digit:]"))
 ```
 
-L'approche tidytext est très simple mais présente quelques problèmes majeurs (la suppression des apostrophes est par exemple une mauvaise solution). Vous pouvez plutôt utiliser udpipe qui est basé sur un modèle linguistique et fonctionne mieux pour découper les phrases en tokens. Un autre avantage d'udpipe est qu'il vous donne également un lemme pour chaque token. L'inconvénient de l'utilisation d'udpipe est qu'elle peut être assez lente sur de grands corpus et qu'elle nécessite un certain traitement de la colonne tokenisée pour gérer la ponctuation.
+L'approche tidytext est très simple mais présente quelques problèmes majeurs (la suppression systématique des apostrophes est par exemple une mauvaise solution car elle va impacter aussi les mots pleins). Vous pouvez plutôt utiliser udpipe qui est basé sur un modèle linguistique et fonctionne mieux pour découper les phrases en tokens. Un autre avantage d'udpipe est qu'il vous donne également un lemme pour chaque token. L'inconvénient de l'utilisation d'udpipe est qu'elle peut être assez lente sur de grands corpus et qu'elle nécessite un post-traitement de la colonne tokenisée pour gérer la ponctuation qui n'est pas systématiquement supprimée par l'algorithme.
 
 ```R copy
 # Installer le modèle français pour udpipe
