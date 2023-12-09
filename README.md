@@ -85,12 +85,20 @@ df_tokenized_udpipe <- udpipe_annotate(ud_model, x = df$Texte) %>%
 # Clean token column
 df_tokenized_udpipe <- df_tokenized_udpipe %>%
   mutate(token = tolower(token)) %>%
+  filter(!upos == "PUNCT") %>% # On supprime les lignes de ponctuation
+  filter(!upos == "SYM") %>% # On supprime les lignes de ponctuation
   mutate(token = ifelse(str_detect(token, "^-"), str_replace(token, "-", ""), token)) %>% # supprime le - quand le token commence par un tiret
   mutate(token = ifelse(str_detect(token, "^«"), str_replace(token, "«", ""), token)) %>% # supprime le « quand le token commence par un guillemet ouvrant
-  mutate(token = ifelse(str_detect(token, ".»$"), str_replace(token, "»", ""), token)) %>% # supprime le guillemet quand le token finit par un guillement
+  mutate(token = ifelse(str_detect(token, "^»"), str_replace(token, "»", ""), token)) %>% # supprime le » quand le token commence par un guillemet fermant
+  mutate(token = ifelse(str_detect(token, ".»$"), str_replace(token, "»", ""), token)) %>% # supprime le » quand le token finit par un guillemet fermant
+  mutate(token = ifelse(str_detect(token, ".«$"), str_replace(token, "«", ""), token)) %>% # supprime le « quand le token commence par un guillemet ouvrant
+  mutate(token = ifelse(str_detect(token, "^,"), str_replace(token, ",", ""), token)) %>% # supprime la virgule quand le token commence par une virgule
   mutate(token = ifelse(str_detect(token, ".'$"), str_replace(token, "'", ""), token)) %>% # supprime l'apostrophe quand le token finit par une apostrophe
+  mutate(token = ifelse(str_detect(token, "^\\?"), str_replace(token, "\\?", ""), token)) %>% # supprime le point d'interrogation quand le token finit par un point d'interrogation
+  mutate(token = ifelse(str_detect(token, ".\\.$"), str_replace(token, "\\.", ""), token)) %>% # supprime le point quand le token finit par un point
+  mutate(token = ifelse(str_detect(token, "^\\.\\.\\."), str_replace(token, "\\.\\.\\.", ""), token)) %>% # supprime les trois points quand le token commence par trois points
+  mutate(token = ifelse(str_detect(token, "^\\."), str_replace(token, "\\.", ""), token)) %>% # supprime le point quand le token commence par un point
   filter(!token %in% french_stopwords$token) %>%
-  filter(!token %in% c(",", ";", ".", "!", "?", "(", ")", ":", "«", "»", "'", "-", "[", "]", "/", "\\", "%", "…", "...", "“", "”", "\"", "+", "-", "–")) %>%
   filter(!token %in% c("")) %>%
   filter(!str_detect(token,"[:digit:]"))
 # Replace missing lemmas with original token
