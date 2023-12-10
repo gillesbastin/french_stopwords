@@ -31,6 +31,10 @@ Diverses sources, dont des listes précédentes (comme [Lexique](http://www.lexi
 
 [`FRENCH_STOPWORDS`](french_stopwords.csv) comprend les types de tokens suivants :
 - Conjonctions de coordination ;
+- Conjonctions de subordination ;
+- Déterminants ;
+- Pronoms (y compris possessifs) ;
+- Prépositions ;
 - Adverbes (en particulier les adverbes de lieu et de temps ; les adverbes de manière n'ont pas été inclus car ils portent très souvent un sens) ;
 - Auxiliaires ("être" et "avoir") ainsi que d'autres verbes souvent utilisés comme auxiliaires ("devoir", "pouvoir", "falloir", "faire", "aller", "dire", "mettre", "passer") ;
 - Nombres cardinaux (tous les tokens utilisés pour compter de zéro à 999 999 ; les tokens "million" et "milliard" (ainsi que leurs formes plurielles) n'ont pas été inclus car ils sont souvent utiles pour catégoriser les textes mentionnant des sujets économiques) ;
