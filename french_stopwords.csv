@@ -1,7 +1,6 @@
 token;category
 a;avoir
 abord;other
-absolument;other
 actuellement;time
 afin;other
 ah;interjections
@@ -43,6 +42,7 @@ août;months
 après;time
 après-demain;time
 après-midi;time
+argh;interjections
 as;avoir
 assez;other
 au;other
@@ -51,8 +51,8 @@ au-dessous;space
 au-dessus;space
 aucun;pronouns
 aucune;other
-aucunement;other
-aujourd;other
+aucuns;other
+aujourd;time
 aujourd'hui;time
 auprès;other
 auquel;pronouns
@@ -98,6 +98,7 @@ bang;interjections
 bas;space
 basta;interjections
 beaucoup;other
+ben;interjections
 beurk;interjections
 bien;other
 bientôt;time
@@ -200,6 +201,7 @@ davantage;other
 de;prepositions
 dedans;space
 dehors;space
+delà;other
 demain;time
 depuis;time
 dernièrement;time
@@ -286,7 +288,7 @@ du;other
 dudit;other
 duquel;pronouns
 durant;prepositions
-dès;time
+dès;subordination
 décembre;months
 déjà;time
 désormais;time
@@ -301,12 +303,12 @@ eh;interjections
 elle;pronouns
 elle-même;pronouns
 elles;pronouns
+elles-mêmes;pronouns
 en;pronouns
 encore;time
 enfin;other
 ensemble;other
 ensuite;other
-entièrement;other
 entre;space
 envers;prepositions
 environ;other
@@ -331,6 +333,7 @@ eut;avoir
 eux;pronouns
 eux-mêmes;pronouns
 excepté;other
+extenso;other
 extérieur;space
 eûmes;avoir
 eût;avoir
@@ -390,7 +393,6 @@ fûmes;etre
 fût;etre
 fûtes;etre
 grand-chose;other
-grandement;other
 grâce;other
 guère;other
 h;apost
@@ -419,7 +421,7 @@ houlà;interjections
 houp;interjections
 hourra;interjections
 hue;interjections
-hui;other
+hui;time
 huit;cardinals
 huitième;ordinals
 huitièmement;ordinals
@@ -432,6 +434,7 @@ il;pronouns
 ils;pronouns
 immédiat;time
 immédiatement;time
+in;other
 incessant;time
 instantanément;time
 intérieur;space
@@ -547,6 +550,7 @@ mille;cardinals
 millier;cardinals
 milliers;cardinals
 millième;ordinals
+mince;interjections
 minuit;time
 minute;time
 minutes;time
@@ -554,6 +558,7 @@ mirent;mettre
 mis;mettre
 mit;mettre
 moi;pronouns
+moi-même;pronouns
 moins;other
 mois;time
 mon;possessive
@@ -597,9 +602,11 @@ onzième;ordinals
 or;coordination
 ou;coordination
 ouah;interjections
+ouais;interjections
 ouf;interjections
 ouh;interjections
 oui;other
+oups;interjections
 oust;interjections
 ouste;interjections
 outre;prepositions
@@ -659,6 +666,7 @@ ploc;interjections
 plouf;interjections
 plus;other
 plusieurs;determinants
+plutôt;other
 posteriori;other
 pouah;interjections
 pouic;interjections
@@ -697,6 +705,7 @@ proche;other
 prou;other
 près;space
 précédent;time
+psst;interjections
 pu;pouvoir
 puis;other
 puisque;subordination
@@ -709,6 +718,7 @@ qu;apost
 qu';apost
 qu'autant;other
 quand;subordination
+quant;other
 quarante;cardinals
 quarante-cinq;cardinals
 quarante-cinquième;ordinals
@@ -728,7 +738,6 @@ quarante-sixième;ordinals
 quarante-trois;cardinals
 quarante-troisième;ordinals
 quarantième;ordinals
-quasiment;other
 quatorze;cardinals
 quatorzième;ordinals
 quatre;cardinals
@@ -844,6 +853,7 @@ sitôt;time
 six;cardinals
 sixième;ordinals
 sixièmement;ordinals
+soi;pronouns
 soi-même;pronouns
 soient;etre
 soir;time
@@ -895,7 +905,6 @@ sous;space
 souvent;time
 soyez;etre
 soyons;etre
-suffisamment;other
 suis;etre
 suivant;time
 suivante;time
@@ -906,6 +915,7 @@ surtout;other
 t;apost
 t';apost
 ta;possessive
+tac;other
 tandis;time
 tant;other
 tard;time
@@ -927,7 +937,6 @@ toc;interjections
 toi;pronouns
 toi-même;pronouns
 ton;possessive
-totalement;other
 touchant;prepositions
 toujours;time
 tous;determinants
@@ -996,6 +1005,7 @@ vingt-sixième;ordinals
 vingt-trois;cardinals
 vingt-troisième;ordinals
 vingtième;ordinals
+vive;interjections
 vlan;interjections
 voici;other
 voilà;other
@@ -1005,6 +1015,7 @@ votre;possessive
 votres;possessive
 vous;pronouns
 vous-mêmes;pronouns
+vu;other
 vôtre;possessive
 vôtres;possessive
 wouah;interjections
