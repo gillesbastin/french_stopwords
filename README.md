@@ -1,4 +1,5 @@
-# French Stopwords
+# French Stopwords & French_Stoplocs : Two curated stoplists of words and locutions for preprocessing French texts
+
 
 [Lisez-moi en français](LISEZMOI.md) • [Read me in English](README.md)
 
