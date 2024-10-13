@@ -44,6 +44,7 @@ après;time
 après-demain;time
 après-midi;time
 argh;interjections
+arrière;space
 as;avoir
 assez;other
 au;other
@@ -96,18 +97,24 @@ aïe;interjections
 badaboum;interjections
 bah;interjections
 bang;interjections
+banco;interjections
 bas;space
 basta;interjections
 beaucoup;other
+because;anglicism
 ben;interjections
+berk;interjections
 beurk;interjections
 bien;other
 bientôt;time
 bigre;interjections
+bim;interjections
 bing;interjections
 bof;interjections
 bon;interjections
+boudu;interjections
 boum;interjections
+brrr;interjections
 bye;interjections
 c;apost
 c';apost
@@ -115,6 +122,7 @@ c'est-à-dire;other
 ça;pronouns
 çà;space
 car;coordination
+caramba;interjection
 ce;determinants
 ceci;pronouns
 cela;pronouns
@@ -190,6 +198,7 @@ constamment;time
 contre;space
 couic;interjections
 crac;interjections
+caramba;interjections
 côté;space
 d;apost
 d';apost
@@ -199,6 +208,7 @@ d'autant;other
 d'où;other
 d'un;other
 d'une;other
+damned;anglicism
 dans;space
 davantage;other
 de;prepositions
@@ -283,6 +293,7 @@ dois;devoir
 doit;devoir
 doivent;devoir
 donc;coordination
+dong;interjections
 dont;pronouns
 douze;cardinals
 douzième;ordinals
@@ -317,6 +328,7 @@ entre;space
 envers;prepositions
 environ;other
 es;etre
+ès;prepositions
 est;etre
 est-à-dire;other
 et;coordination
@@ -384,6 +396,8 @@ feriez;faire
 ferions;faire
 ferons;faire
 feront;faire
+fi;interjections
+fichtre;interjections
 fine;other
 firent;faire
 fis;faire
@@ -492,6 +506,7 @@ lendemain;time
 lendemains;time
 lequel;pronouns
 les;determinants
+lès;space
 lesquelles;pronouns
 lesquels;pronouns
 leur;pronouns
@@ -612,6 +627,7 @@ octobre;months
 oh;interjections
 ohé;interjections
 olé;interjections
+ollé;interjections
 on;pronouns
 ont;avoir
 onze;cardinals
@@ -832,6 +848,7 @@ sa;possessive
 sacrebleu;interjections
 samedi;days
 sans;prepositions
+saperlipopette;interjections
 sapristi;interjections
 sauf;prepositions
 se;pronouns
@@ -872,6 +889,7 @@ sitôt;time
 six;cardinals
 sixième;ordinals
 sixièmement;ordinals
+snif;interjections
 soi;pronouns
 soi-même;pronouns
 soient;etre
@@ -924,6 +942,7 @@ sous;space
 souvent;time
 soyez;etre
 soyons;etre
+splash;interjections
 suis;etre
 suivant;time
 suivante;time
@@ -935,8 +954,10 @@ t;apost
 t';apost
 ta;possessive
 tac;other
+tagada;interjections
 tandis;time
 tant;other
+taratata;interjections
 tard;time
 tardivement;time
 tchao;interjections
@@ -991,7 +1012,9 @@ troisièmement;ordinals
 trop;other
 très;other
 tsouin;interjections
+tsoin;interjections
 tu;pronouns
+tudieu;interjections
 tôt;time
 un;determinants
 une;determinants
@@ -1036,6 +1059,7 @@ vôtre;possessive
 vôtres;possessive
 vous;pronouns
 vous-mêmes;pronouns
+vroum;interjections
 vu;other
 wouah;interjections
 y;pronouns
