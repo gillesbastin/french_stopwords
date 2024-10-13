@@ -511,6 +511,7 @@ lesquelles;pronouns
 lesquels;pronouns
 leur;pronouns
 leurs;possessive
+lez;space
 loin;space
 longtemps;time
 lors;time
@@ -530,6 +531,7 @@ malgré;prepositions
 mardi;days
 mars;months
 matin;time
+mazette;interjections
 me;pronouns
 mensuel;time
 mercredi;days
@@ -557,7 +559,9 @@ mettriez;mettre
 mettrions;mettre
 mettrons;mettre
 mettront;mettre
+meuh;interjections
 mi;other
+miam;interjections
 mi-août;months
 mi-avril;months
 mi-décembre;months
@@ -593,12 +597,14 @@ moi-même;pronouns
 moins;other
 mois;time
 mon;possessive
+morbelu;interjections
 mouais;interjections
 moyennant;prepositions
 même;other
 mêmes;other
 mîmes;mettre
 mîtes;mettre
+motus;interjections
 n;apost
 n';apost
 ne;other
@@ -639,6 +645,7 @@ ouais;interjections
 ouf;interjections
 ouh;interjections
 oui;other
+ouille;interjections
 oups;interjections
 oust;interjections
 ouste;interjections
@@ -647,7 +654,9 @@ où;pronouns
 paf;interjections
 pan;interjections
 par;prepositions
+parbleu;interjections
 parce;other
+pardi;interjections
 pardieu;interjections
 parfois;time
 parmi;prepositions
@@ -683,6 +692,8 @@ passâmes;passer
 passâtes;passer
 passèrent;passer
 passé;passer
+patata;interjections
+patati;interjections
 patatras;interjections
 pendant;time
 personne;pronouns
@@ -703,6 +714,7 @@ plutôt;other
 posteriori;other
 pouah;interjections
 pouic;interjections
+pouf;interjections
 pour;prepositions
 pourquoi;other
 pourra;pouvoir
@@ -738,6 +750,7 @@ proche;other
 prou;other
 près;space
 précédent;time
+pst;interjections
 psst;interjections
 pu;pouvoir
 puis;other
