@@ -19,7 +19,7 @@ Bien que l'approche des listes de mots vides soit actuellement contestée par de
 ## Contenu du répertoire
 
 - [`FRENCH_STOPWORDS`](french_stopwords.csv) contient uniquement des mots simples (ou tokens), par opposition aux expressions ou locutions (il inclut par exemple "en" et "face" mais pas "en face"). Il comprend des tokens contenant une apostrophe (comme "aujourd'hui") et, dans ce cas, également les parties séparées de tels tokens ("aujourd" et "hui") afin d'éviter les problèmes de mauvaise gestion des apostrophes lors de la tokenisation. La liste inclut également des tokens contenant un tiret ("dix-sept"). Elle est stockée dans un fichier CSV avec deux colonnes : token et catégorie (les tokens sont catégorisés grammaticalement de manière très approximative en raison de leur ambiguïté). Au 10 octobre 2024, la liste compte 1083 entrées.
-- [`FRENCH_STOPLOCS`](french_stoplocs.csv) contient des locutions adverbiales composées de mots vides ou ayant les mêmes caractéristiques que les mots vides (sens faible ou ambigu), telles que "à cause de" ou "d'une manière ou d'une autre". Elle est également stockée sous forme de fichier CSV avec une seule colonne nommée 'locution'. Au 10 octobre 2024, la liste compte 327 entrées.
+- [`FRENCH_STOPLOCS`](french_stoplocs.csv) contient des locutions adverbiales composées de mots vides ou ayant les mêmes caractéristiques que les mots vides (sens faible ou ambigu), telles que "à cause de" ou "d'une manière ou d'une autre". Elle est également stockée sous forme de fichier CSV avec une seule colonne nommée 'locution'. Au 10 octobre 2024, la liste compte 373 entrées.
 
 ## Méthodologie
 
