@@ -110,7 +110,7 @@ df_tokenized_udpipe <- df_tokenized_udpipe %>%
 df_tokenized_udpipe$lemma[is.na(df_tokenized_udpipe$lemma)] <- df_tokenized_udpipe$token
 ```
 
-Si vous souhaitez utiliser [`FRENCH_STOPLOCS`](french_stoplocs.csv), vous devez exécuter le code R suivant directement sur votre colonne Texte :
+Si vous souhaitez utiliser [`FRENCH_STOPLOCS`](french_stoplocs.csv), vous devez exécuter le code R suivant directement sur votre colonne Texte avant la tokenisation :
 
 ```R copy
 # Créer une liste de locutions séparées par "|"
