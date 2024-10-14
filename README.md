@@ -53,6 +53,10 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 
 [`FRENCH_STOPLOCS`](french_stoplocs.csv) is a compilation of frequently employed adverbial phrases in French. However, it is not an exhaustive collection. Its primary objective is to suppress those adverbial phrases consisting of tokens that might convey different meanings when interpreted individually. This is particularly important to prevent potential misinterpretations that could arise if the phrases were not removed prior to tokenization.
 
+## Updates
+
+This work started
+
 ## How to use the lists
 
 The typical use case for a stopwords list involves removing all stopwords it contains from the analyzed documents. This pre-processing step in an NLP pipeline requires careful consideration.
