@@ -1,4 +1,4 @@
-# French Stopwords & French_Stoplocs : Deux listes de mots et de locutions pour la préparation de textes en français
+# French_Stopwords & French_Stoplocs : Deux listes de mots et de locutions pour la préparation de textes en français
 
 [Lisez-moi en français](LISEZMOI.md) • [Read me in English](README.md)
 
