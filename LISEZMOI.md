@@ -52,6 +52,13 @@ Diverses sources, dont des listes précédentes (comme [Lexique](http://www.lexi
 
 [`FRENCH_STOPLOCS`](french_stoplocs.csv) est une compilation de locutions adverbiales fréquemment utilisées en français. Cependant, il ne s'agit pas d'une collection exhaustive. Son objectif principal est de supprimer les locutions adverbiales constituées de tokens qui pourraient avoir des significations différentes lorsqu'elles sont interprétées individuellement. Cela est particulièrement important pour éviter les malentendus potentiels qui pourraient survenir si les locutions n'étaient pas supprimées avant la tokenisation.
 
+## Mises à jour
+
+Le commit initial de ce projet remonte au 29 novembre 2023. Depuis, les listes ont été modifiées occasionnellement. À partir d'octobre 2024, les mises à jour des listes sont documentées ci-dessous :
+- 12 octobre 2024 : Les listes ont été partagées sur la liste de diffusion "quanti".
+- 13 octobre 2024 : Suite à un retour de cette liste de diffusion, une comparaison avec la liste de Neuchâtel (Jacques Savoy) a été ajoutée, et certaines interjections de cette liste ont été incorporées.
+- 14 octobre 2024 : La liste FRENCH_STOPLOCS a été mise à jour avec des locutions sélectionnées à partir du [Wiktionnaire](https://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Locutions_adverbiales_en_fran%C3%A7ais) (de "et al." à "à flots").
+    
 ## Comment utiliser les listes
 
 Le cas d'utilisation typique d'une liste de mots vides consiste à supprimer tous les mots vides qu'elle contient des documents analysés. Cette étape de prétraitement dans un pipeline NLP nécessite une attention particulière.
