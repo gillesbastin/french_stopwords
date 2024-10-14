@@ -1,0 +1,40 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  French Stopwords & French_Stoplocs : Two curated stoplists
+  of words and locutions for preprocessing French texts
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - orcid: 'https://orcid.org/0000-0001-5892-4730'
+    given-names: Gilles
+    family-names: Bastin
+    email: gilles.bastin@iepg.fr
+    affiliation: 'School of Political Studies, Université Grenoble Alpes'
+repository-code: 'https://github.com/gillesbastin/french_stopwords'
+abstract: >-
+  This repository contains a carefully curated list of
+  stopwords for preprocessing French texts, specifically
+  designed for text mining tasks (FRENCH_STOPWORDS). This
+  list does not claim to be exhaustive, but its length (over
+  1,000 tokens) and thorough documentation help overcome
+  some limitations of the previously mentioned ones. I have
+  used it on several occasions, mainly for preprocessing
+  news corpora. I believe that it is both comprehensive and
+  effective for this type of task. With its help — typically
+  by simply removing the words in the list (as well as
+  punctuation and numbers) from a tokenized version of a
+  corpus, the size of a standard French text document can be
+  reduced by 50 % without much loss of meaning. In addition,
+  the repository also contains a list of adverbial locutions
+  which can be used — albeit with more caution — in French
+  text preprocessing (FRENCH_STOPLOCS).
+keywords:
+  - >-
+    Text Mining, Statistique Lexicale, NLP, stopwords,
+    stoplists
+license: CC-BY-NC-SA-4.0
