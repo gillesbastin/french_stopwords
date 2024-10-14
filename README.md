@@ -55,7 +55,10 @@ Various sources, including previous lists (as [Lexique](http://www.lexique.org/)
 
 ## Updates
 
-This work started
+The initial commit for this project dates back to November 29, 2023. Since then, the lists have been occasionally modified. Starting from October 2024, updates to the lists are documented below:
+- October 12, 2024: The lists were shared on the "quanti" mailing list.
+- October 13, 2024: Following feedback from the mailing list, a comparison with the Neuchâtel List (Jacques Savoy) was added, and some interjections from this list were incorporated.
+- October 14, 2024: The FRENCH_STOPLOCS list was updated with curated locutions from [Wiktionary](https://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Locutions_adverbiales_en_fran%C3%A7ais) (from "et al." to "à flots").
 
 ## How to use the lists
 
